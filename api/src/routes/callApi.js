@@ -120,4 +120,4 @@ const setTemperament = async() => {
         }    
     })
 }
-module.exports = { list,shearchId,namesFilter, setTemperament }
+module.exports = { list,shearchId,namesFilter, setTemperament, temperaments, setTemperament }

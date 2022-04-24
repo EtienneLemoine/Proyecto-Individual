@@ -1,0 +1,5 @@
+
+.allCards{
+    display: flex;
+    flex-direction: column;
+}

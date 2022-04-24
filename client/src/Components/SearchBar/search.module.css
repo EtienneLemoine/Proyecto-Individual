@@ -1,0 +1,53 @@
+.flex{
+    display: flex !important;
+}
+
+.search{
+    margin-right: .5rem!important;
+    transition: none;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: .25rem;
+    box-sizing: border-box;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+}
+.button{
+    cursor: pointer;
+    color: rgb(209, 168, 32);
+    border-color: rgb(209, 168, 32);
+    transition: none;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+}
+
+.button:hover{
+    background-color:rgb(209, 168, 32);
+    color: black;
+}

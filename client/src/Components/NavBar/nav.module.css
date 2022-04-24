@@ -1,0 +1,120 @@
+.home{
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.selecte{
+    transition: none;
+    display: block;
+    padding: .5rem 1rem;
+    color: #0d6efd;
+    text-decoration: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-transform: none;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    box-sizing: border-box;
+    overflow: visible !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    cursor: default;
+    margin: 0em;
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+.option{
+    display: block;
+    width: 100%;
+    padding: .25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    box-sizing: border-box;
+}
+.navbar{
+    font-family: Parkavenue, cursive;
+    text-shadow: 1px 1px 2px black;
+    background-color: #212529!important;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.create{
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: box-shadow .15s ease-in-out;
+}
+
+.link{
+    box-sizing: border-box;
+    color: rgb(209, 168, 32);
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.link:hover{
+    color: blue;
+}
+
+.button{
+    box-sizing: border-box;
+    margin: 0;
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    text-rendering: auto;
+    color: rgb(209, 168, 32);;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
