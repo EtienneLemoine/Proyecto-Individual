@@ -17,6 +17,7 @@ router.get('/', async(req, res, next) => {
         
         let lista = await list()
         
+        
         return res.status(200).send(lista)
     }
     catch(err) {

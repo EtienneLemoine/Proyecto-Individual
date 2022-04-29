@@ -7,10 +7,11 @@ export default function Card(props) {
   return (
     <Link to={`/Details/${props.id}`} className={S.card}>
       <div>
+        
         <div className={S.bodyCard}>
           { props.image?
           <img src={props.image} className={S.image} />:
-          <img src='https://us.123rf.com/450wm/damedeeso/damedeeso1509/damedeeso150900033/44964439-trabajador-perro-manitas-con-el-casco-y-el-martillo-en-la-boca-listo-para-reparar-arreglar-todo-en-c.jpg?ver=6' className={S.image} />
+          <img src='https://st4.depositphotos.com/4431055/23458/i/600/depositphotos_234585364-stock-photo-cute-confused-little-dog-with.jpg' className={S.image} />
         }
           
         </div>

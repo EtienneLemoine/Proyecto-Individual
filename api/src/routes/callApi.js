@@ -2,19 +2,39 @@ const axios = require('axios');
 const { apikey } = process.env
 const { Dog, Temperament}= require('../db')
 
-const list= async () => {
+const list = async () => {
 
     let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
     let dogListApi = apiCall.data.map(e =>{
         let arr = e.temperament && e.temperament.split(',').map(e => e.trim())
-        
+    
         let convertW = e.weight.metric.split(' ')
-        let resultW = parseInt(convertW[0]) + parseInt(convertW[2]) / 2
+        let resultW = parseInt(convertW)
+        if(convertW.length !== 1){
+         resultW = parseInt(convertW[0]) + parseInt(convertW[2]) / 2
+         resultW = isNaN(resultW)? 0 : resultW;
+        }
+        resultW = isNaN(resultW)? 0 : resultW;
 
         let convertH = e.height.metric.split(' ')
-        let resultH = parseInt(convertH[0]) + parseInt(convertH[2]) / 2
-
+        let resultH = parseInt(convertH)
+        if(convertH.length !== 1){
+            resultH = parseInt(convertH[0]) + parseInt(convertH[2]) / 2
+        }
+        let convertL = e.life_span.split(' ')
+        let resultL = convertL[0]
+        
+        // Dog.findOrCreate({
+        //   where:{
+        //       name: e.name,
+        //       height: resultH,
+        //       weight: resultW,
+        //       life_span: resultL,
+        //       image: e.image.url
+        //   }  
+        // })
         return { name: e.name,  temperaments: arr , image: e.image.url, id: e.id ,weight: resultW, height: resultH}
+        
     })
     
     let dogListDB = await Dog.findAll({
@@ -97,18 +117,15 @@ const  shearchId= async (parameter) => {
 }
 
 const  temperaments= async() => {
-
-    let lista = await list()
-
-    let arr = []
-    lista.map(e => {
-        if(e.temperaments){
-            arr = [...e.temperaments, ...arr];
-        }         
-    })
-
-    let ars = [...new Set(arr)].sort()
-    return ars
+    let tempApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
+    let tempMap = tempApi.data.map(el => el.temperament)
+    let infoapi = [];
+    for (let i = 0; i < tempMap.length; i++) {
+        if (tempMap[i]) {
+            infoapi.push(tempMap[i].split(', '))
+        }
+    }
+    return infoapi.flat()
 }
 
 const setTemperament = async() => {

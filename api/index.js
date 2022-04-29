@@ -19,6 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { list } = require('./src/routes/callApi.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {

@@ -12,6 +12,7 @@ export default function Send() {
     height: "",
     weight: "",
     life_span: "",
+    image: "",
     temperaments: [],
   });
 
@@ -49,7 +50,7 @@ export default function Send() {
   function HandleSubmit(e) {
     e.preventDefault();
     dispatch(sendDogs(objCreate));
-    alert("Has creado un perro");
+    alert(`Se a creado un perro con el nombre ${objCreate.name}`)
   }
 
   useEffect(() => {
@@ -69,16 +70,16 @@ export default function Send() {
   }
   return (
     <div>
-      <nav className={S.navbar}>
+      <div className={S.navbar}>
         <Link to="/Home" className={S.link}>
           <h3 className={S.color}>Home</h3>
         </Link>
-      </nav>
+      </div>
       <div className={S.center}>
         <form onSubmit={(e) => HandleSubmit(e)} className={S.flex}>
           <div>
             <label className={S.texts}>
-              Name:
+              Name 📍:
               <input
                 type="text"
                 name="name"
@@ -89,7 +90,7 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Height:
+              Height 📍:
               <input
                 type="text"
                 name="height"
@@ -100,7 +101,7 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Weight:
+              Weight 📍:
               <input
                 type="text"
                 name="weight"
@@ -111,11 +112,22 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Life span:
+              Life span 📍:
               <input
                 type="text"
                 name="life_span"
                 value={objCreate.life_span}
+                onChange={(e) => HandleChange(e)}
+              />
+            </label>
+          </div>
+          <div>
+            <label className={S.texts}>
+              Image 📍:
+              <input
+                type="text"
+                name="image"
+                value={objCreate.image}
                 onChange={(e) => HandleChange(e)}
               />
             </label>
@@ -145,7 +157,7 @@ export default function Send() {
             </select>
           </div>
 
-          <button type="submit" className={S.button}>
+          <button type="submit" disabled={!objCreate.name || !objCreate.weight || !objCreate.height ||!objCreate.life_span||!objCreate.image }>
             Create
           </button>
         </form>

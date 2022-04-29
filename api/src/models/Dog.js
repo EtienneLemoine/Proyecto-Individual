@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     height: {
       type: DataTypes.INTEGER,
@@ -23,6 +24,10 @@ module.exports = (sequelize) => {
     },
     life_span: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    image: {
+      type: DataTypes.STRING,
       allowNull: true,
     }
   },

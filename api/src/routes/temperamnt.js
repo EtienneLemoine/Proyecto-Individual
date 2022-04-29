@@ -4,9 +4,17 @@ const router = Router();
 const { list, temperaments }  = require('./callApi')
 
 router.get('/', async(req, res)=> {
+    let tempTotal = await temperaments()
+    const onEach = tempTotal.forEach(element => {
+        Temperament.findOrCreate({
+            where: { name: element }
+        })
+    });
+    const allTemp = await Temperament.findAll()
+    res.status(200).send(allTemp)
+})
 
-    let temperamentos = await temperaments()
-    Temperament.bulkCreate(temperamentos)
-    return res.status(200).send(temperamentos)
+router.get('/lista', async(req,res)=>{
+    res.send(await temperaments())
 })
 module.exports= router;

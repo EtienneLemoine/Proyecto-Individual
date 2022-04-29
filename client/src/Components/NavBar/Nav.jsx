@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterZA, filterAZ, orderHeightMax, orderHeightMim, orderWeightMax, orderWeightMim,
    getDogs, getTemperament, filterTemp } from "../../Actions/index";
 import { useEffect, useState } from "react";
-
+import S from'./nav.module.css'
 
 export default function Nav() {
   const dispatch = useDispatch();
@@ -42,28 +42,28 @@ export default function Nav() {
     setFilter(e.target.value)
   }
   return (
-      <div>
-          <NavLink exact to="/Home" >
+      <div className= {S.navbar}>
+          <NavLink exact to="/Home" className={S.link}>
             <h4>Home</h4>
           </NavLink>        
-          <Link to='/Create'>Crear</Link>
+          <Link to='/Create'className={S.link}>Create</Link>
         <div>
-          <select  onChange={e => HundleOnchangeOrder(e)} > 
-            <option  value='order'>Order</option>      
-            <option value="A-Z">A-Z</option>
-            <option value="Z-A">Z-A</option>
-            <option value="heigthMay">Mas altura</option>
-            <option value="heigthMin">Menos altura</option>
-            <option value="weigthMay">Mas peso</option>
-            <option value="weigthMin" >Menos peso</option>       
+          <select className={S.selecte} onChange={e => HundleOnchangeOrder(e)} > 
+            <option className={S.option} value='order'>Order</option>      
+            <option className={S.option}value="A-Z">A-Z</option>
+            <option className={S.option}value="Z-A">Z-A</option>
+            <option className={S.option}value="heigthMay">Heigth higher</option>
+            <option className={S.option}value="heigthMin">Heigth less</option>
+            <option className={S.option}value="weigthMay">Weigth higher</option>
+            <option className={S.option}value="weigthMin" >Weigth less</option>       
           </select>
         </div>
         <div>
-          <select  onChange={e => HundleOnchangeFilter(e)}>
-            <option value="-">Temperamento</option>
+          <select className={S.selecte} onChange={e => HundleOnchangeFilter(e)}>
+            <option value="-">Temperaments</option>
             {temps &&
               temps.map((e) => {
-                return <option key={e.id} value={e.name}>{e.name}</option>;
+                return <option className={S.option}key={e.id} value={e.name}>{e.name}</option>;
               })}
           </select>
         </div>     

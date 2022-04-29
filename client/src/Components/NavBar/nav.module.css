@@ -10,7 +10,7 @@
     transition: none;
     display: block;
     padding: .5rem 1rem;
-    color: #0d6efd;
+    color: rgb(183, 109, 12);
     text-decoration: none;
     white-space: nowrap;
     word-wrap: normal;
@@ -50,7 +50,7 @@
     padding: .25rem 1rem;
     clear: both;
     font-weight: 400;
-    color: #212529;
+    color: rgb(183, 109, 12);
     text-align: inherit;
     text-decoration: none;
     white-space: nowrap;
@@ -87,7 +87,7 @@
 
 .link{
     box-sizing: border-box;
-    color: rgb(209, 168, 32);
+    color: rgb(183, 109, 12);
     padding-top: .3125rem;
     padding-bottom: .3125rem;
     font-size: 1.25rem;
@@ -95,7 +95,7 @@
     white-space: nowrap;
 }
 .link:hover{
-    color: blue;
+    color: white;
 }
 
 .button{
@@ -114,7 +114,7 @@
     text-align: center;
     align-items: flex-start;
     text-rendering: auto;
-    color: rgb(209, 168, 32);;
+    color: rgb(183, 109, 12);
     letter-spacing: normal;
     word-spacing: normal;
 }
