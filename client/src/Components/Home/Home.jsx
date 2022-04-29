@@ -3,12 +3,15 @@ import Cards from "../Cards/Cards";
 import Nav from "../NavBar/Nav";
 
 
+
 export default function Home() {
+
   return (
     <div>
       <Nav />
       <div>
-        <Cards/>
+        <Cards
+        />
       </div>
     </div>
   );

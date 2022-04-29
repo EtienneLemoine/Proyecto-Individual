@@ -19,7 +19,6 @@ export default function Nav() {
       dispatch(filterTemp(filter))
       
     }else{
-      console.log('PITULIN ENTRO A LA SALA')
       dispatch(getDogs())
     }   
   },[dispatch, filter])

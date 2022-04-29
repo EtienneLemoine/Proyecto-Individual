@@ -3,12 +3,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIdDogs } from "../../Actions/index";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import S from "./detail.module.css";
+
 
 export default function Details() {
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.dogDetails);
+  const history = useHistory()
 
   let { id } = useParams();
 
@@ -16,12 +18,17 @@ export default function Details() {
     dispatch(getIdDogs(id));
   }, [id]);
 
+  function handleClick(){
+    history.push('/Home');
+    window.location.reload()
+  }
+
+
+
   return (
     <div className={S.flexs}>
       
-      <Link to="/Home">
-        <button>HOME</button>
-      </Link>
+      <button onClick={handleClick}>Home</button>
 
       <div className={S.content}>
         <div>
