@@ -8,6 +8,7 @@
 }
 .selecte{
     transition: none;
+    border-radius: 10px;
     display: block;
     padding: .5rem 1rem;
     color: rgb(183, 109, 12);
@@ -46,6 +47,7 @@
 }
 .option{
     display: block;
+    border-radius: 10px;
     width: 100%;
     padding: .25rem 1rem;
     clear: both;
@@ -61,19 +63,20 @@
 .navbar{
     font-family: Parkavenue, cursive;
     text-shadow: 1px 1px 2px black;
-    background-color: #212529!important;
+    backdrop-filter: blur(8px);
     box-sizing: border-box;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     flex-direction: row;
     align-content: center;
     flex-wrap: wrap;
+    border-bottom: 2px solid rgb(183, 109, 12);
 }
 .create{
     padding: .25rem .75rem;
@@ -93,6 +96,7 @@
     font-size: 1.25rem;
     text-decoration: none;
     white-space: nowrap;
+    margin-left: 0.3rem;
 }
 .link:hover{
     color: white;
@@ -117,4 +121,24 @@
     color: rgb(183, 109, 12);
     letter-spacing: normal;
     word-spacing: normal;
+}
+.buttonHome{
+    box-sizing: border-box;
+    color: rgb(183, 109, 12);
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 0.3rem;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 1.25rem;
+    line-height: inherit;
+    border-radius: 10px;
+    border-color: rgb(183, 109, 12);
+}
+.buttonHome:hover{
+    background-color:rgb(183, 109, 12);
+     color: black;
+     cursor: pointer;
 }

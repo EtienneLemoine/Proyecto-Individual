@@ -42,10 +42,12 @@ export default function Nav() {
   }
   return (
       <div className= {S.navbar}>
-          <NavLink exact to="/Home" className={S.link}>
-            <h4>Home</h4>
+          <NavLink exact to="/Home">
+            <button className={S.buttonHome}>Home</button>
           </NavLink>        
-          <Link to='/Create'className={S.link}>Create</Link>
+          <NavLink to="/Create">
+            <button className={S.buttonHome}>Create</button>
+          </NavLink>  
         <div>
           <select className={S.selecte} onChange={e => HundleOnchangeOrder(e)} > 
             <option className={S.option} value='order'>Order</option>      

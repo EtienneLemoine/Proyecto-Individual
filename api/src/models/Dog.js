@@ -15,15 +15,15 @@ module.exports = (sequelize) => {
       unique: true
     },
     height: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(),
       allowNull: false,
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(),
       allowNull: false,
     },
     life_span: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(),
       allowNull: true,
     },
     image: {

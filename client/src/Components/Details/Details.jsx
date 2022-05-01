@@ -3,14 +3,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIdDogs } from "../../Actions/index";
 import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
 import S from "./detail.module.css";
 
 
 export default function Details() {
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.dogDetails);
-  const history = useHistory()
 
   let { id } = useParams();
 
@@ -19,17 +17,14 @@ export default function Details() {
   }, [id]);
 
   function handleClick(){
-    history.push('/Home');
-    window.location.reload()
+    window.location = '/Home';
   }
-
-
 
   return (
     <div className={S.flexs}>
-      
-      <button onClick={handleClick}>Home</button>
-
+      <div className={S.navbar}>
+      <button onClick={handleClick} className={S.button}>Home</button>
+      </div>
       <div className={S.content}>
         <div>
           {detail.image ? (
@@ -44,28 +39,28 @@ export default function Details() {
         </div>
         <div className={S.bottom}>
           <div className={S.show}>
-            <h5>Altura: </h5>
+            <h5>Height: </h5>
             <h5 className={S.margin}> {" " + detail.height} CM</h5>
           </div>
 
           <div className={S.show}>
-            <h5>Peso: </h5>
-            <h5 className={S.margin}> {" " + detail.weight} M</h5>
+            <h5>Weight: </h5>
+            <h5 className={S.margin}> {" " + detail.weight} Kg</h5>
           </div>
 
           <div className={S.show}>
-            <h5>Esperanza de vida: </h5>
+            <h5>Life Span: </h5>
             <h5 className={S.margin}> {" " + detail.life_span} Years</h5>
           </div>
 
           <div className={S.show}>
-            <h5>Temperamento: </h5>
+            <h5>Temperament: </h5>
             <h5 className={S.margin}>
               {detail.temperaments
                 ? typeof detail.temperaments === "object"
                   ? detail.temperaments.map((e) => {
                       if (e) {
-                        return "  " + e;
+                        return e + ", ";
                       }
                     })
                   : detail.temperaments.map((e) => {

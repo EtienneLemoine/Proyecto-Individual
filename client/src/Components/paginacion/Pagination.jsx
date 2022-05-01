@@ -1,6 +1,7 @@
 import React from "react";
 import { usePagination, DOTS } from "./usePagination";
 import s from  './pagination.module.css';
+import classNames from "classnames"
 const Pagination = (props) => {
   const {
     onPageChange,
@@ -8,6 +9,7 @@ const Pagination = (props) => {
     siblingCount = 1,
     currentPage,
     pageSize,
+    className,
   } = props;
 
   const paginationRange = usePagination({
@@ -32,9 +34,9 @@ const Pagination = (props) => {
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
-    <ul className={s.conteiner}>
+    <ul className={classNames(s.conteiner, {[className]: className})}>
       {/* Left navigation arrow */}
-      <li onClick={onPrevious} className={s.item}>
+      <li onClick={onPrevious} className={classNames(s.item, {disabled: currentPage===1})}>
         <div className={s.arrow_left}/>
       </li>
       {paginationRange.map((pageNumber) => {

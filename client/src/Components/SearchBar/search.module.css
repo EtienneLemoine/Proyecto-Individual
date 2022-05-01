@@ -16,7 +16,7 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     appearance: none;
-    border-radius: .25rem;
+    border-radius: 10px;
     box-sizing: border-box;
     text-rendering: auto;
     letter-spacing: normal;
@@ -29,25 +29,22 @@
     cursor: text;
 }
 .button{
-    cursor: pointer;
+    box-sizing: border-box;
     color: rgb(183, 109, 12);
-    border-color: rgb(209, 168, 32);
-    transition: none;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
     text-decoration: none;
-    vertical-align: middle;
-    user-select: none;
+    white-space: nowrap;
+    margin-left: 0.3rem;
     background-color: transparent;
-    border: 1px solid;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    border-radius: .25rem;
+    font-family: inherit;
+    font-size: 1.25rem;
+    line-height: inherit;
+    border-radius: 10px;
+    border-color: rgb(183, 109, 12);
 }
 
 .button:hover{
-    background-color:rgb(209, 168, 32);
+    background-color:rgb(183, 109, 12);
     color: black;
 }

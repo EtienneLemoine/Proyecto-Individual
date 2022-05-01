@@ -10,11 +10,9 @@ import Pagination from "../paginacion/Pagination"
 export default function Cards() {
   const dispatch = useDispatch();
   const dogs = useSelector((state) => state.dogsLoaded);
-  const breads = 9
+  const breads = 8
 
   const [currentPage, setCurrentPage] = useState(1);
-
-  
 
   let indexLast = currentPage * breads;
   let firstIndex = indexLast - breads;

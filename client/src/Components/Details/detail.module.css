@@ -12,7 +12,7 @@
     border: 2px solid rgb(209, 207, 207);
     border-radius: 20px;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: rgba(250, 235, 215, 0.577);
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -51,12 +51,14 @@
 .navbar{
     display: flex;
     width: 100%;
-    background-color:#212529;
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid rgb(183, 109, 12);
     flex-direction: column;
     align-items: center;
     align-content: center;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 7.2rem;
+
 }
 
 h3{
@@ -83,4 +85,27 @@ h3{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
+}
+
+.button{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+    color: rgb(183, 109, 12);
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 0.3rem;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 1.25rem;
+    line-height: inherit;
+    border-radius: 10px;
+    border-color: rgb(183, 109, 12);
+}
+.button:hover{
+    background-color:rgb(183, 109, 12);
+     color: black;
+     cursor: pointer;
 }

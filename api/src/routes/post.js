@@ -13,7 +13,7 @@ router.post('/', async(req, res)=> {
             life_span,
             image
         });
-
+        
         const temps = await Temperament.findAll({where: {name: temperaments}})
 
         const al = await raza.addTemperaments(temps);
@@ -22,6 +22,7 @@ router.post('/', async(req, res)=> {
 
     } catch (error) {
         console.log(error);
+        
     }
 })
 module.exports= router;

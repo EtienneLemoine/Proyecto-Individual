@@ -20,18 +20,18 @@ export default function Search() {
     <div className={S.flex}>
         <input
           type="text"
-          placeholder="Busqueda..."
+          placeholder="Search..."
           onChange={(e) => HandleChange(e)}
           className = {S.search}
         />
 
         {input !== "" ? (
           <Link to="/Home/Search">
-            <button className={S.button} onClick={() => HandleSubmit()}>Buscar</button>
+            <button className={S.button} onClick={() => HandleSubmit()}>Search</button>
           </Link>
         ) : (
           <Link to="/Home">
-            <button className={S.button} onClick={() => HandleSubmit()}>Buscar</button>
+            <button className={S.button} onClick={() => HandleSubmit()}>Search</button>
           </Link>
         )}
     </div>

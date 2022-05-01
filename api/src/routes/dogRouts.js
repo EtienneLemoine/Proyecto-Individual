@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const { Dog, Temperament } = require('../db')
 const { list, namesFilter, shearchId }  = require('./callApi')
 
 router.get('/', async(req, res, next) => {

@@ -16,10 +16,15 @@ export default function Send() {
     temperaments: [],
   });
 
+  const dogs = useSelector((state) => state.dogsLoaded);
+ 
+  console.log(dogs)
+
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temperaments);
 
   function HandleChange(e) {
+
     if (e.target.name !== "name") {
       if (reg.test(e.target.value)) {
         let temporal = { ...objCreate };
@@ -46,11 +51,30 @@ export default function Send() {
       setObjCreate(temporal);
     }
   }
+  console.log(objCreate.height)
 
   function HandleSubmit(e) {
+   for(let i = 0; i<dogs.length;i++){
+     if(dogs[i].name===objCreate.name){
+      e.preventDefault();
+      alert(`There is already a dog with the name "${objCreate.name}"`) 
+     }
+   }
+   if(objCreate.height > 150){
+    alert('The value entered in the "height" is invalid')
+    e.preventDefault();
+   }else if(objCreate.weight > 150){
+    alert('The value entered in the "weight" is invalid')
+    e.preventDefault();
+   }else if(objCreate.life_span.length > 2){
+    alert('The value entered in the "Life Span" is invalid')
+    e.preventDefault();
+   }else{
     e.preventDefault();
     dispatch(sendDogs(objCreate));
-    alert(`Se a creado un perro con el nombre ${objCreate.name}`)
+    alert(`A dog has been created with the name "${objCreate.name}"`)
+    window.location = '/Home';
+   }
   }
 
   useEffect(() => {
@@ -72,7 +96,7 @@ export default function Send() {
     <div>
       <div className={S.navbar}>
         <Link to="/Home" className={S.link}>
-          <h3 className={S.color}>Home</h3>
+        <button className={S.buttonHome}>Home</button>
         </Link>
       </div>
       <div className={S.center}>
@@ -156,10 +180,11 @@ export default function Send() {
                   })}
             </select>
           </div>
-
-          <button type="submit" disabled={!objCreate.name || !objCreate.weight || !objCreate.height ||!objCreate.life_span||!objCreate.image }>
+          
+          <button type="submit" className={S.buttonHome} disabled={!objCreate.name || !objCreate.weight || !objCreate.height ||!objCreate.life_span||!objCreate.image }>
             Create
           </button>
+          
         </form>
       </div>
     </div>
