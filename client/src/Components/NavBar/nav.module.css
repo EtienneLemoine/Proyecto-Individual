@@ -76,7 +76,7 @@
     flex-direction: row;
     align-content: center;
     flex-wrap: wrap;
-    border-bottom: 2px solid rgb(183, 109, 12);
+    border-bottom: 2px solid rgb(109, 72, 25);
 }
 .create{
     padding: .25rem .75rem;
@@ -135,7 +135,7 @@
     font-size: 1.25rem;
     line-height: inherit;
     border-radius: 10px;
-    border-color: rgb(183, 109, 12);
+    border-color: rgb(109, 72, 25);
 }
 .buttonHome:hover{
     background-color:rgb(183, 109, 12);

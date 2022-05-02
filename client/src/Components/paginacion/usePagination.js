@@ -27,10 +27,6 @@ export const usePagination = ({
       return range(1, totalPageCount);
     }
 
-    /*
-    	Calculate left and right sibling index and make sure they are within range 1 and totalPageCount
-    */
-
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
     const rightSiblingIndex = Math.min(
       currentPage + siblingCount,
@@ -38,8 +34,8 @@ export const usePagination = ({
     );
 
     /*
-      We do not want to show dots if there is only one position left after the left page
-      or before the right page count as that would lead to a change if our Pagination
+      We do not want to show dots if there is only one position left 
+      after/before the left/right page count as that would lead to a change if our Pagination
       component size which we do not want
     */
     const shouldShowLeftDots = leftSiblingIndex > 2;
@@ -48,20 +44,12 @@ export const usePagination = ({
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
 
-    /*
-    	Case 2: No left dots to show, but rights dots to be shown
-    */
-
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount;
       let leftRange = range(1, leftItemCount);
 
       return [...leftRange, DOTS, totalPageCount];
     }
-
-    /*
-    	Case 3: No right dots to show, but left dots to be shown
-    */
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
       let rightItemCount = 3 + 2 * siblingCount;
@@ -71,10 +59,6 @@ export const usePagination = ({
       );
       return [firstPageIndex, DOTS, ...rightRange];
     }
-
-    /*
-    	Case 4: Both left and right dots to be shown
-    */
 
     if (shouldShowLeftDots && shouldShowRightDots) {
       let middleRange = range(leftSiblingIndex, rightSiblingIndex);

@@ -58,6 +58,8 @@ export default function Send() {
      if(dogs[i].name===objCreate.name){
       e.preventDefault();
       alert(`There is already a dog with the name "${objCreate.name}"`) 
+      let volver = window.location = `/Details/${dogs[i].id}`;
+      return volver;
      }
    }
    if(objCreate.height > 150){
