@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIdDogs } from "../../Actions/index";
 import { useParams } from "react-router";
 import S from "./detail.module.css";
+import Loading from "../Loading/Loading";
 
 
 export default function Details() {
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.dogDetails);
-
+  const  [loading, setLoading]  = useState(true);
+  console.log(detail)
   let { id } = useParams();
 
   useEffect(() => {
@@ -21,6 +23,10 @@ export default function Details() {
   }
 
   return (
+    <div>
+      {loading === true ? (
+        <Loading setLoading={setLoading} />
+      ) : (
     <div className={S.flexs}>
       <div className={S.navbar}>
       <button onClick={handleClick} className={S.button}>Home</button>
@@ -73,6 +79,8 @@ export default function Details() {
           </div>
         </div>
       </div>
+    </div>
+      )}
     </div>
   );
 }

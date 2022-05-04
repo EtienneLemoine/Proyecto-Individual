@@ -7,10 +7,12 @@ import { filterZA, filterAZ, orderHeightMax, orderHeightMim, orderWeightMax, ord
 import { useEffect, useState } from "react";
 import S from'./nav.module.css'
 
-export default function Nav() {
+
+export default function Nav({setCurrentPage, currentPage}) {
   const dispatch = useDispatch();
   const [order, setOrder] = useState('')
   const [filter,setFilter] = useState('')
+  
 
   const temps = useSelector((state) => state.temperaments);
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function Nav() {
 
   function HundleOnchangeFilter(e) {
     setFilter(e.target.value)
+    setCurrentPage(1)
   }
   return (
       <div className= {S.navbar}>
@@ -50,7 +53,7 @@ export default function Nav() {
           </NavLink>  
         <div>
           <select className={S.selecte} onChange={e => HundleOnchangeOrder(e)} > 
-            <option className={S.option} value='order'>Order</option>      
+            <option className={S.option}value='order'>Order</option>      
             <option className={S.option}value="A-Z">A-Z</option>
             <option className={S.option}value="Z-A">Z-A</option>
             <option className={S.option}value="heigthMay">Heigth higher</option>

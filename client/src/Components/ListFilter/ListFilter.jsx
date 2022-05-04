@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../Cards/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Nav from "../NavBar/Nav";
-import { getpage } from "../../Actions/index"
-import Paginate from "../Cards/Paginate";
+
 
 export default function ListFilter() {
   const dispatch = useDispatch();
@@ -16,10 +15,6 @@ export default function ListFilter() {
   let indexLast = pages * breads;
   let firstIndex = indexLast - breads;
   const currentBreads = aut?.slice(firstIndex, indexLast);
-
-  function pagenate(pageNumber) {
-    dispatch(getpage(pageNumber));
-  }
 
   return (
     <div>
@@ -39,9 +34,7 @@ export default function ListFilter() {
               );
             })}
         </div>
-        <div>
-          <Paginate dogis={aut} breads={breads} paginate={pagenate} />
-        </div>
+      
       </div>
     </div>
   );

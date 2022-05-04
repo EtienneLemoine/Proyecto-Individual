@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import S from "./search.module.css"
 
 export default function Search() {
+  const  [loading, setLoading]  = useState(true);
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
@@ -17,6 +18,7 @@ export default function Search() {
     dispatch(getNameDogs(input));
   }
   return (
+    
     <div className={S.flex}>
         <input
           type="text"

@@ -106,6 +106,7 @@ const  shearchId= async (parameter) => {
                 height: objeto.height,
                 weight: objeto.weight,
                 life_span: objeto.life_span,
+                image: objeto.image,
                 temperaments: objeto.temperaments.map(e => {
                     return e.name + ' '
                 }),
