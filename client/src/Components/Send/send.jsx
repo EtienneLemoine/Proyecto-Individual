@@ -5,7 +5,6 @@ import { getTemperament, sendDogs } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import S from "./send.module.css";
 export default function Send() {
-  var reg = new RegExp(/[0-9]/g);
   const [temps, setTemps] = useState([]);
   const [objCreate, setObjCreate] = useState({
     name: "",
@@ -18,23 +17,11 @@ export default function Send() {
 
   const dogs = useSelector((state) => state.dogsLoaded);
  
-  console.log(dogs)
 
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temperaments);
 
   function HandleChange(e) {
-
-    if (e.target.name !== "name") {
-      if (reg.test(e.target.value)) {
-        let temporal = { ...objCreate };
-
-        temporal[e.target.name] = e.target.value;
-        setObjCreate(temporal);
-      } else {
-        return alert("No ingreso un numero");
-      }
-    }
 
     let temporal = { ...objCreate };
 
@@ -54,30 +41,44 @@ export default function Send() {
   console.log(objCreate.height)
 
   function HandleSubmit(e) {
-   for(let i = 0; i<dogs.length;i++){
-     if(dogs[i].name===objCreate.name){
-      e.preventDefault();
-      alert(`There is already a dog with the name "${objCreate.name}"`) 
-      let volver = window.location = `/Details/${dogs[i].id}`;
-      return volver;
+    let regExp = /\.(jpg|jpeg|png|webp|avif|gif|svg)$/;
+    let expName = /^[a-zA-Z\s]/;
+    let expURL = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
+    let expNumber = /^[0-9]+$/;
+
+     for(let i = 0; i<dogs.length;i++){
+       if(dogs[i].name===objCreate.name){
+        e.preventDefault();
+        alert(`There is already a dog with the name "${objCreate.name}"`) 
+        let volver = window.location = `/Details/${dogs[i].id}`;
+        return volver;
+       }
      }
-   }
-   if(objCreate.height > 150){
-    alert('The value entered in the "height" is invalid')
-    e.preventDefault();
-   }else if(objCreate.weight > 150){
-    alert('The value entered in the "weight" is invalid')
-    e.preventDefault();
-   }else if(objCreate.life_span.length > 2){
-    alert('The value entered in the "Life Span" is invalid')
-    e.preventDefault();
-   }else{
-    e.preventDefault();
-    dispatch(sendDogs(objCreate));
-    alert(`A dog has been created with the name "${objCreate.name}"`)
-    window.location = '/Home';
-   }
-  }
+     if(!expNumber.test(objCreate.height)){
+      alert('The value entered in the "height" is invalid')
+      e.preventDefault();
+     }else if(!expName.test(objCreate.name)){
+      alert('The value entered in the "name" is invalid')
+      e.preventDefault();
+     }else if(!expNumber.test(objCreate.weight)){
+      alert('The value entered in the "weight" is invalid')
+      e.preventDefault();
+     }else if(objCreate.life_span > 100|| !expNumber.test(objCreate.life_span)){
+      alert('The value entered in the "Life Span" is invalid')
+      e.preventDefault();
+     }else if(!regExp.test(objCreate.image) || !expURL.test(objCreate.image)){
+      alert('The value entered in the "image" is invalid')
+      e.preventDefault();
+     }else if(objCreate.temperaments.length === 0){
+      alert('You must enter a temperament!!')
+      e.preventDefault();
+     }else{
+      e.preventDefault();
+      dispatch(sendDogs(objCreate));
+      alert(`A dog has been created with the name "${objCreate.name}"`)
+      window.location = '/Home';
+     }
+    }
 
   useEffect(() => {
     dispatch(getTemperament());
@@ -116,9 +117,9 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Height 📍:
+              Height 📍: {objCreate.height}
               <input
-                type="text"
+                type="range" min="1" max="150" id="slider"
                 name="height"
                 value={objCreate.height}
                 onChange={(e) => HandleChange(e)}
@@ -127,9 +128,9 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Weight 📍:
+              Weight 📍: {objCreate.weight}
               <input
-                type="text"
+                type="range" min="1" max="150" id="slider"
                 name="weight"
                 value={objCreate.weight}
                 onChange={(e) => HandleChange(e)}
@@ -138,9 +139,9 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Life span 📍:
+              Life span 📍: {objCreate.life_span}
               <input
-                type="text"
+                type="range" min="1" max="100" id="slider"
                 name="life_span"
                 value={objCreate.life_span}
                 onChange={(e) => HandleChange(e)}
@@ -149,7 +150,7 @@ export default function Send() {
           </div>
           <div>
             <label className={S.texts}>
-              Image 📍:
+              Image (URL) 📍:
               <input
                 type="text"
                 name="image"

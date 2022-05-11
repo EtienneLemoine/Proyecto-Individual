@@ -15,3 +15,8 @@ export const weight = (a,b) => {
     if(a.weight > b.weight) return -1
     return 0
 }
+export const life_span = (a,b) => {
+    if(a.life_span < b.life_span) return 1
+    if(a.life_span > b.life_span) return -1
+    return 0
+}

@@ -7,7 +7,6 @@ const list = async () => {
     let apiCall = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${apikey}`)
     let dogListApi = apiCall.data.map(e =>{
         let arr = e.temperament && e.temperament.split(',').map(e => e.trim())
-    
         let convertW = e.weight.metric.split(' ')
         let resultW = parseInt(convertW)
         if(convertW.length !== 1){
@@ -24,16 +23,7 @@ const list = async () => {
         let convertL = e.life_span.split(' ')
         let resultL = convertL[0]
         
-        // Dog.findOrCreate({
-        //   where:{
-        //       name: e.name,
-        //       height: resultH,
-        //       weight: resultW,
-        //       life_span: resultL,
-        //       image: e.image.url
-        //   }  
-        // })
-        return { name: e.name,  temperaments: arr , image: e.image.url, id: e.id ,weight: resultW, height: resultH}
+        return { name: e.name,  temperaments: arr ,life_span: resultL, image: e.image.url, id: e.id ,weight: resultW, height: resultH}
         
     })
     

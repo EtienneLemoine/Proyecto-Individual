@@ -1,6 +1,6 @@
 import { GET_DOGS, GET_ID_DOGS, GET_TEMPERAMENT, GET_NAME_DOGS, 
     PAGE, FILTER_ZA, FILTER_AZ, ORDER_HEIGHT_MAX, ORDER_HEIGHT_MIN, 
-    ORDER_WEIGHT_MAX, ORDER_WEIGHT_MIN, FILTER_TEMP } from './constantes'
+    ORDER_WEIGHT_MAX, ORDER_WEIGHT_MIN ,FILTER_TEMP } from './constantes'
 import { URL_DOG, URL_TEMPERAMENT } from '../Constantes'
 import axios from 'axios'
 
@@ -43,7 +43,8 @@ export function getTemperament(){
 export function sendDogs(dog){ 
     return async function() {
         try{
-            let algo=  await axios.post(URL_DOG, dog)
+            await axios.post(URL_DOG, dog)
+           
         }
         catch(err){
             console.error(err)

@@ -5,8 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import S from "./search.module.css"
 
-export default function Search() {
-  const  [loading, setLoading]  = useState(true);
+export default function Search({setCurrentPage}) {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
@@ -14,8 +13,21 @@ export default function Search() {
     setInput(e.target.value);
   }
 
-  function HandleSubmit() {
+  function handleenter(e) {
+    if (e.key === "Enter") {
+      HandleSubmit(e);
+    }
+  };
+
+  function HandleSubmit(e) {
+    if(input.length){
+    e.preventDefault()
     dispatch(getNameDogs(input));
+    setCurrentPage(1)
+    document.getElementsByTagName("input")[0].value = "";
+    }else{
+      alert("404 not fount")
+    }
   }
   return (
     
@@ -23,17 +35,18 @@ export default function Search() {
         <input
           type="text"
           placeholder="Search..."
+          onKeyPress={handleenter}
           onChange={(e) => HandleChange(e)}
           className = {S.search}
         />
 
         {input !== "" ? (
           <Link to="/Home/Search">
-            <button className={S.button} onClick={() => HandleSubmit()}>Search</button>
+            <button className={S.button} onClick={(e) => HandleSubmit(e)}>Search</button>
           </Link>
         ) : (
           <Link to="/Home">
-            <button className={S.button} onClick={() => HandleSubmit()}>Search</button>
+            <button className={S.button} onClick={(e) => HandleSubmit(e)}>Search</button>
           </Link>
         )}
     </div>

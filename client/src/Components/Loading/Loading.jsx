@@ -7,6 +7,7 @@ export default function Loading({ setLoading }) {
       <img 
       src="https://media0.giphy.com/media/eYilisUwipOEM/giphy.gif?cid=ecf05e4782ey9hx0bt53d836w6zbkw6yx9oyotv5oeu5e4h0&rid=giphy.gif&ct=g"
       className={S.img}
+      alt=""
       />
       <div className={S.content}>
       <h3 className={S.content1}>Loading...</h3>
