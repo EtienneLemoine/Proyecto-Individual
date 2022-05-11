@@ -13,10 +13,10 @@ export default function Card(props) {
           <img src={props.image} className={S.image} alt="imagen2"/>:
           <img src='https://st4.depositphotos.com/4431055/23458/i/600/depositphotos_234585364-stock-photo-cute-confused-little-dog-with.jpg' className={S.image} alt="imagen"/>
         }
-          
         </div>
-
+      
         <h4 className={S.names}>{props.name}</h4>
+        
         <p className={S.temp}>
           { props.temperament
             ? typeof props.temperament[0] === "object"

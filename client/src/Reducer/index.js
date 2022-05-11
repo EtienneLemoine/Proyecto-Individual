@@ -44,7 +44,6 @@ export default function reducer(state = initialState, action) {
       };
 
     case GET_NAME_DOGS:
-
       return {
         ...state,
         page: 1,
@@ -88,19 +87,24 @@ export default function reducer(state = initialState, action) {
       };
 
     case FILTER_TEMP:
-      const algoBread = state.copyBread;
-      const algoFilt =
-        action.payload === "all"
-          ? algoBread
-          : algoBread.filter(
-              (e) =>
-                e.temperaments &&
-                e.temperaments.includes(action.payload)
-            );
+      if (action.payload === "all") {
+        return {
+          dogsLoaded: state.copyBread,
+        };
+      }
       return {
         ...state,
-        dogsLoaded: algoFilt,
-      }
+        page: 1,
+        dogsLoaded: state.copyBread?.filter((e) => {
+          if (e.temperaments !== undefined) {
+            if (typeof e.temperaments[0] === "string") {
+              return e.temperaments?.includes(action.payload);
+            }
+            let arr = e.temperaments?.map((e) => e.name);
+            return arr.includes(action.payload);
+          }
+        }),
+      };
 
     case PAGE:
       return {

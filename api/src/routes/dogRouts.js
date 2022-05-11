@@ -38,4 +38,6 @@ router.get("/:idRaza", async (req, res) => {
     return res.status(401).send("Error");
   }
 });
+
+
 module.exports = router;
