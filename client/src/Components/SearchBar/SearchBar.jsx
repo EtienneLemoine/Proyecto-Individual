@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 import S from "./search.module.css"
 
 export default function Search({setCurrentPage}) {
+  const  [loading, setLoading]  = useState(true);
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
   function HandleChange(e) {
+    e.preventDefault()
+    setInput("")
     setInput(e.target.value);
   }
 
@@ -24,15 +27,16 @@ export default function Search({setCurrentPage}) {
     e.preventDefault()
     dispatch(getNameDogs(input));
     setCurrentPage(1)
-    document.getElementsByTagName("input")[0].value = "";
+    setInput("")
     }else{
-      alert("404 not fount")
+      alert("You must enter a name to search!!")
     }
   }
   return (
     
     <div className={S.flex}>
         <input
+          value={input}
           type="text"
           placeholder="Search..."
           onKeyPress={handleenter}

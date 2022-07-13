@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -61,8 +61,8 @@ export default function Nav({ setCurrentPage, currentPage }) {
         <button className={S.buttonHome}>Create</button>
       </NavLink>
       <div>
-        <select defaultValue="" className={S.selecte} onChange={(e) => hundleOnchangeOrder(e)}>
-          <option  className={S.option} hidden value="Order">
+        <select className={S.selecte} onChange={(e) => hundleOnchangeOrder(e)}>
+          <option  className={S.option} hidden selected value="">
             Order
           </option>
           <option className={S.option} value="A-Z">
@@ -86,7 +86,7 @@ export default function Nav({ setCurrentPage, currentPage }) {
         </select>
       </div>
       <div>
-        <select defaultValue="" className={S.selecte} onChange={(e) => hundleOnchangeFilter(e)}>
+        <select className={S.selecte} onChange={(e) => hundleOnchangeFilter(e)}>
           <option value="all">Temperaments</option>
           {temps &&
             temps.map((e) => {

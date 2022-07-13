@@ -13,6 +13,7 @@ function App() {
       <Route exact path= "/" component={LandingPage}></Route>
       <Route exact path= "/Home" component={Home}></Route>
       <Route path= "/Details/:id" component={Details}></Route>
+      <Route path= "/Home/Search" component={ListFilter}></Route>
       <Route path= "/Create" component={Send}></Route>
     </div>
   )

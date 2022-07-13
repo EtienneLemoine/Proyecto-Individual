@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import Nav from "../NavBar/Nav";
 import Loading from "../Loading/Loading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getDogs } from "../../Actions";
 
 export default function Home() {
@@ -14,7 +14,6 @@ export default function Home() {
   
   useEffect(() => {
     dispatch(getDogs()); 
-    setCurrentPage(1)
 }, [dispatch]);
 
   return (

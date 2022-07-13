@@ -5,6 +5,7 @@ import { getTemperament, sendDogs } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import S from "./send.module.css";
 export default function Send() {
+  var reg = new RegExp(/[0-9]/g);
   const [temps, setTemps] = useState([]);
   const [objCreate, setObjCreate] = useState({
     name: "",
@@ -17,6 +18,7 @@ export default function Send() {
 
   const dogs = useSelector((state) => state.dogsLoaded);
  
+  console.log(dogs)
 
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temperaments);
@@ -45,7 +47,6 @@ export default function Send() {
     let expName = /^[a-zA-Z\s]/;
     let expURL = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
     let expNumber = /^[0-9]+$/;
-
      for(let i = 0; i<dogs.length;i++){
        if(dogs[i].name===objCreate.name){
         e.preventDefault();
@@ -54,20 +55,17 @@ export default function Send() {
         return volver;
        }
      }
-     if(!expNumber.test(objCreate.height)){
+     if(objCreate.height > 150 || !expNumber.test(objCreate.height)){
       alert('The value entered in the "height" is invalid')
       e.preventDefault();
      }else if(!expName.test(objCreate.name)){
       alert('The value entered in the "name" is invalid')
       e.preventDefault();
-     }else if(!expNumber.test(objCreate.weight)){
+     }else if(objCreate.weight > 150 || !expNumber.test(objCreate.weight)){
       alert('The value entered in the "weight" is invalid')
       e.preventDefault();
-     }else if(objCreate.life_span > 100|| !expNumber.test(objCreate.life_span)){
+     }else if(objCreate.life_span > 100 || !expNumber.test(objCreate.life_span)){
       alert('The value entered in the "Life Span" is invalid')
-      e.preventDefault();
-     }else if(!regExp.test(objCreate.image) || !expURL.test(objCreate.image)){
-      alert('The value entered in the "image" is invalid')
       e.preventDefault();
      }else if(objCreate.temperaments.length === 0){
       alert('You must enter a temperament!!')

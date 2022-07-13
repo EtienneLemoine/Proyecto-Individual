@@ -12,7 +12,7 @@ import {
   ORDER_WEIGHT_MIN,
   FILTER_TEMP,
 } from "../Actions/constantes";
-import { orderAZ, height, weight } from "../Components/ListOrder/ListOrder.jsx";
+import { orderAZ, height, weight,  } from "../Components/ListOrder/ListOrder.jsx";
 
 const initialState = {
   dogsLoaded: [],
@@ -44,6 +44,7 @@ export default function reducer(state = initialState, action) {
       };
 
     case GET_NAME_DOGS:
+
       return {
         ...state,
         page: 1,
@@ -86,25 +87,29 @@ export default function reducer(state = initialState, action) {
         dogsLoaded: state.dogsLoaded.slice().sort(weight).reverse(),
       };
 
-    case FILTER_TEMP:
-      if (action.payload === "all") {
-        return {
-          dogsLoaded: state.copyBread,
-        };
-      }
-      return {
-        ...state,
-        page: 1,
-        dogsLoaded: state.copyBread?.filter((e) => {
-          if (e.temperaments !== undefined) {
-            if (typeof e.temperaments[0] === "string") {
-              return e.temperaments?.includes(action.payload);
-            }
-            let arr = e.temperaments?.map((e) => e.name);
-            return arr.includes(action.payload);
+      case FILTER_TEMP:
+        if(action.payload === 'all'){
+          
+           console.log("Llegaron todos")
+          return {
+            ...state,
+            dogsLoaded: state.copyBread
           }
-        }),
-      };
+        }
+        return {
+            ...state,
+            page: 1,
+            dogsLoaded: state.copyBread?.filter(e => {
+                if(e.temperaments !== undefined){
+                   if(typeof e.temperaments[0] === 'string'){
+                    
+                   return e.temperaments?.includes(action.payload)
+                }
+                let arr = e.temperaments?.map(e => e.name)
+                return arr.includes(action.payload) 
+                }
+            }),                       
+        }
 
     case PAGE:
       return {

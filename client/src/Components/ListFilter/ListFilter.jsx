@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../Cards/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Nav from "../NavBar/Nav";
 import S from "./ListFilter.module.css"
 
 export default function ListFilter() {
+  const dispatch = useDispatch();
   const aut = useSelector((state) => state.dogsLoaded);
 
   const pages = useSelector((state) => state.page)
